@@ -31,17 +31,4 @@ class Target
     textAlign(CENTER);
     text(this.label, this.x, this.y);
   }
-
-  getLabel() {
-    return this.label;
-  }
-
-  setX(x) {
-    this.x = x;
-  }
-
-  setY(y) {
-    this.y = y;
-  }
-
 }

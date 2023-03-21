@@ -7,7 +7,7 @@
 
 // Database (CHANGE THESE!)
 const GROUP_NUMBER        = 0;      // Add your group number here as an integer (e.g., 2, 3)
-const RECORD_TO_FIREBASE  = false;  // Set to 'true' to record user results to Firebase
+const RECORD_TO_FIREBASE  = true;  // Set to 'true' to record user results to Firebase
 
 // Pixel density and setup variables (DO NOT CHANGE!)
 let PPI, PPCM;
@@ -195,62 +195,24 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
   // for the number of targets minus one
   h_margin = horizontal_gap / (GRID_COLUMNS -1);
   v_margin = vertical_gap / (GRID_ROWS - 1);
-
-
-  // get the target labels and ids
+  
+  // Set targets in a 8 x 10 grid
   for (var r = 0; r < GRID_ROWS; r++)
   {
     for (var c = 0; c < GRID_COLUMNS; c++)
     {
+      let target_x = 40 + (h_margin + target_size) * c + target_size/2;        // give it some margin from the left border
+      let target_y = (v_margin + target_size) * r + target_size/2;
+      
       // Find the appropriate label and ID for this target
       let legendas_index = c + GRID_COLUMNS * r;
       let target_label = legendas.getString(legendas_index, 0);
-      let target_id = legendas.getNum(legendas_index, 1);
-      let target_x = 0;
-      let target_y = 0;
+      let target_id = legendas.getNum(legendas_index, 1);     
+      
       let target = new Target(target_x, target_y + 40, target_size, target_label, target_id);
       targets.push(target);
-    }
+    }  
   }
-
-
-  // sort labels alphabetically
-  targets.sort((a,b) => {
-
-    let nameA = a.getLabel().toUpperCase(); // ignore upper and lowercase
-    let nameB = b.getLabel().toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    // names must be equal
-    return 0;
-
-  })
-
-
-  let n = 0;
-  // Set targets in a 8 x 10 grid
-  for (r = 0; r < GRID_ROWS; r++)
-  {
-    for (var h = 0; h < GRID_COLUMNS; h++)
-    {
-      let target_x = 40 + (h_margin + target_size) * h + target_size/2;        // give it some margin from the left border
-      let target_y = 40 +(v_margin + target_size) * r + target_size/2;
-
-      let curr_target = targets[n];
-
-      curr_target.setX(target_x);
-      curr_target.setY(target_y);
-
-      targets[n] = curr_target;
-      n++;
-    }
-  }
-
-
 }
 
 // Is invoked when the canvas is resized (e.g., when we go fullscreen)
