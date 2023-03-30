@@ -54,7 +54,7 @@ function draw()
   if (draw_targets && attempt < 2)
   {     
     // The user is interacting with the 6x3 target grid
-    background(color(34, 40, 49));        // sets background to black
+    background(color(39,39, 39));        // sets background to black
     
     // Print trial count at the top left-corner of the canvas
     textFont("Arial", 16);
@@ -66,10 +66,13 @@ function draw()
 	for (var i = 0; i < legendas.getRowCount(); i++) targets[i].draw();
     
     // Draw the target label to be selected in the current trial
-    textFont("Arial", 20);
-    fill(color(255,255,255));
-    textAlign(CENTER);
-    text(legendas.getString(trials[current_trial],0), width/2, height - 20);
+  fill(color(0,0,0));
+  rect(0, height - 40, width, 40);      // draws a black rectangle behind the trial label for optimal contrast
+ 
+  textFont("Arial", 20); 
+  fill(color(255,255,255)); 
+  textAlign(CENTER); 
+  text(legendas.getString(trials[current_trial],0), width/2, height - 20);
   }
 }
 
@@ -268,7 +271,7 @@ function windowResized()
     // Below we find out out white space we can have between 2 cm targets
     let screen_width   = display.width * 2.54;             // screen width
     let screen_height  = display.height * 2.54;            // screen height
-    let target_size    = 2.5;                                // sets the target size (will be converted to cm when passed to createTargets)
+    let target_size    = 2;                                // sets the target size (will be converted to cm when passed to createTargets)
     let horizontal_gap = screen_width - target_size * GRID_ROWS;// empty space in cm across the x-axis (based on 10 targets per row)
     let vertical_gap   = screen_height - target_size * GRID_COLUMNS;  // empty space in cm across the y-axis (based on 8 targets per column)
 
