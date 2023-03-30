@@ -51,11 +51,16 @@ class Target {
     rect(this.x - this.width, this.y- 30, this.width * 2, 60);
 
     // Draw label
-    textFont("Arial", 24);
+    textFont("Arial", 30);
     textStyle(BOLD);
     fill(color(0, 0, 0));
     textAlign(CENTER);
-    text(this.label, this.x, this.y);
+    text(this.label[0], this.x, this.y - 3);
+
+
+    textStyle(NORMAL);
+    textFont("Arial", 16);
+    text(this.label, this.x, this.y + 20);
   }
 
   getLabel() {
