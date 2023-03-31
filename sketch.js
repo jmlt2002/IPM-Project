@@ -6,7 +6,7 @@
 // p5.js reference: https://p5js.org/reference/
 
 // Database (CHANGE THESE!)
-const GROUP_NUMBER        = 0;      // Add your group number here as an integer (e.g., 2, 3)
+const GROUP_NUMBER        = 55;      // Add your group number here as an integer (e.g., 2, 3)
 const RECORD_TO_FIREBASE  = true;  // Set to 'true' to record user results to Firebase
 
 // Pixel density and setup variables (DO NOT CHANGE!)
@@ -96,7 +96,7 @@ function printAndSavePerformance()
   textAlign(CENTER);
   text("Attempt " + (attempt + 1) + " out of 2 completed!", width/2, 60); 
   text("Hits: " + hits, width/2, 100);
-  text("Misses: " + misses, width/2, 120);<!--inset your firebaseConfig-->
+  text("Misses: " + misses, width/2, 120);
   text("Accuracy: " + accuracy + "%", width/2, 140);
   text("Total time taken: " + test_time + "s", width/2, 160);
   text("Average time per target: " + time_per_target + "s", width/2, 180);
