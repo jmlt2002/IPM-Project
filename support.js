@@ -48,6 +48,7 @@ function drawUserIDScreen() {
     <br> 2. Todas as palavras que começam com a mesma letra têm a mesma cor \
     <br> 3. Good luck and have fun!"
   );
+  instructions.style("color", "white");
   instructions.id("instructions");
   instructions.position(
     10,
